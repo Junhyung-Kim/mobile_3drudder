@@ -38,12 +38,11 @@ sdk.Init()
 # 3dRudder 1
 nPortNumber=0
 
-while nPortNumber == 0: 
-    a = [5.0,2,3.333,4.0]
-    b = str(a)
-    c = bytes(b, 'utf-8')
-    socket_client.send(c)
-    time.sleep(0.1)
+a = [0.0,0.0,0.0,0.0]
+b = str(a)
+c = bytes(b, 'utf-8')
+socket_client.send(c)
+time.sleep(0.1)
 
 #Check that the 3dRudder 1 is connected
 while not sdk.IsDeviceConnected (nPortNumber):
