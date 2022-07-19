@@ -70,7 +70,6 @@ while(sdk.GetStatus(nPortNumber)<6):
     elif(i==5):
         print("wait...")
 
-    time.sleep(1)
 
 print("Initialize Finished")
 
