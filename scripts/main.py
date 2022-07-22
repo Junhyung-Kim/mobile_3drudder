@@ -50,8 +50,17 @@ def talker():
                 cmdvel.linear.x = 0.0
                 cmdvel.linear.y = 0.0
         else:
-            cmdvel.linear.x = 0.0
-            cmdvel.linear.y = 0.0
+            if abs(abs(res[0])-abs(res[1])) > 0.2:
+                cmdvel.angular.z = 0.0
+                if abs(res[0]) > abs(res[1]):
+                    cmdvel.linear.x = 0.0
+                    cmdvel.linear.y = 0.5* res[0]
+                else:
+                    cmdvel.linear.x = 0.5* res[1]
+                    cmdvel.linear.y = 0.0
+            else:
+                cmdvel.linear.x = 0.0
+                cmdvel.linear.y = 0.0
             cmdvel.angular.z = 0.5* res[3]
 
         pub_vel.publish(cmdvel)

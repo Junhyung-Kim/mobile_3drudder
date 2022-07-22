@@ -73,6 +73,60 @@ while(sdk.GetStatus(nPortNumber)<6):
 
 print("Initialize Finished")
 
+rollDeadzone = 5
+rollXSat = 18
+rollYMax = 1
+rollExp = 4
+pitchDeadzone = 5
+pitchXSat = 18
+pitchYMax = 1
+pitchExp = 4
+yawDeadzone = 5
+yawXSat = 18
+yawYMax = 1
+yawExp = 4
+curves=CurveArray()
+
+print("Roll")
+roll=Curve()
+#rollDeadzone = float(input("Set roll deadzone(deg), Max is 18 deg : "))
+roll.SetDeadZone(rollDeadzone/18)
+#rollXSat = float(input("Set roll XSat(deg), Max is 18 deg : "))
+roll.SetXSat(rollXSat/18)
+#rollYMax = float(input("Set roll YMax : "))
+roll.SetYMax(rollYMax)
+#rollExp = float(input("Set roll Exp : "))
+roll.SetExp(rollExp)
+curves.SetCurve(CurveRoll,roll)
+print(" ")
+
+print("Pitch")
+pitch=Curve()
+#pitchDeadzone = float(input("Set pitch deadzone(deg), Max is 18 deg : "))
+pitch.SetDeadZone(pitchDeadzone/18)
+#pitchXSat = float(input("Set pitch XSat(deg), Max is 18 deg : "))
+pitch.SetXSat(pitchXSat/18)
+#pitchYMax = float(input("Set pitch YMax : "))
+pitch.SetYMax(pitchYMax)
+#pitchExp = float(input("Set pitch Exp : "))
+pitch.SetExp(pitchExp)
+curves.SetCurve(CurvePitch,pitch)
+print(" ")
+
+print("Yaw")
+yaw=Curve()
+print()
+#yawDeadzone = float(input("Set yaw deadzone(deg), Max is 25 deg : "))
+yaw.SetDeadZone(yawDeadzone/25)
+#yawXSat = float(input("Set yaw XSat(deg), Max is 25 deg : "))
+yaw.SetXSat(yawXSat/25)
+#yawYMax = float(input("Set yaw YMax : "))
+yaw.SetYMax(yawYMax)
+#yawExp = float(input("Set yaw Exp : "))
+yaw.SetExp(yawExp)
+curves.SetCurve(CurveYaw,yaw)
+print(" ")
+
 axis = Axis()
 while(sdk.GetStatus(nPortNumber)<8):
     print ("Sensor  Value : [{:d},{:d},{:d},{:d},{:d},{:d}] ".format(sdk.GetSensor( nPortNumber ,0 ),sdk.GetSensor( nPortNumber , 1 ),sdk.GetSensor( nPortNumber , 2 ),sdk.GetSensor( nPortNumber , 3 ),sdk.GetSensor( nPortNumber , 4 ),sdk.GetSensor( nPortNumber , 5 )))
